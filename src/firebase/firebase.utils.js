@@ -12,7 +12,7 @@ const config = {
   appId: '1:728160974517:web:671102ad5e25166054b0fc',
   measurementId: 'G-ZWDQEDNDEQ'
 };
-
+//thisi swokng
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
