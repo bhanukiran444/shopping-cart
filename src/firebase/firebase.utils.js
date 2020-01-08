@@ -9,9 +9,10 @@ const config = {
   projectId: 'shopping-cart-eaf33',
   storageBucket: 'shopping-cart-eaf33.appspot.com',
   messagingSenderId: '728160974517',
-  appId: '1:728160974517:web:671102ad5e25166054b0fc',
-  measurementId: 'G-ZWDQEDNDEQ'
+  appId: '1:728160974517:web:671102ad5e25166054b0fc'
 };
+
+firebase.initializeApp(config);
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
@@ -23,23 +24,20 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!snapShot.exists) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
-
     try {
-      userRef.set({
+      await userRef.set({
         displayName,
         email,
         createdAt,
         ...additionalData
       });
     } catch (error) {
-      console.log('Error creatin user', error.message);
+      console.log('error creating user', error.message);
     }
   }
 
   return userRef;
 };
-
-firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
