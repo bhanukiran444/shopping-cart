@@ -92,7 +92,6 @@ export function* onSignOutStart() {
 }
 
 export function* onSignUpStart() {
-    debugger
     yield takeLatest(userActionTypes.SIGN_UP_START, signUp)
 }
 
